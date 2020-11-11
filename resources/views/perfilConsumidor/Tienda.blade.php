@@ -1,4 +1,4 @@
-@extends('perfilConsumidor')
+@extends('perfilConsumidor/Consumidor')
 
 @section('consumidor_content')
 
@@ -14,7 +14,7 @@
         @foreach ($data_empresas_cercanas as $info_empresa)
             <div class="col-xsm-12 col-xs-12 col-sm-12 col-md-6 col-lg-4">
                 <div class="form-group">
-                    <form action="{{url('tiendaempresa-consumidor')}}" method="post">
+                    <form action="{{url('empresa-consumidor')}}" method="post">
                         @csrf
                         <input type="hidden" name="idEmpresa" value="{{$info_empresa->IDUsuario}}" style="display:none;">
                         <button class="btn" type="submit" style="border:none;">

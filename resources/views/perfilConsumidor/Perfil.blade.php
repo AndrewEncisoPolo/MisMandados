@@ -1,4 +1,4 @@
-@extends('perfilConsumidor')
+@extends('perfilConsumidor/Consumidor')
 
 @section('consumidor_content')
 

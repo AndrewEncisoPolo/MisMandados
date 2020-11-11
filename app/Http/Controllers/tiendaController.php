@@ -9,7 +9,7 @@ class tiendaController extends Controller
 {
     public function init(){
         $data_productos = DB::select('CALL get_producto_inicio()');
-        return view('tienda')->with('lista_productos', $data_productos);
+        return view('principal/tienda')->with('lista_productos', $data_productos);
     }
 
 }

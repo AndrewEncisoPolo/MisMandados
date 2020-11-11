@@ -1,5 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+.bottom-sheet-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+.bottom-sheet {
+  overflow: auto;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 40vw;
+  position: fixed;
+  bottom: -70vh;
+  z-index: 999;
+  background: #fff;
+  transition: all 0.3s;
+  text-align: left;
+}
+.bottom-sheet.active {
+  bottom: 0;
+}
+
+@media (min-width: 400px){
+  .bottom-sheet{
+      width: 100vw;
+  }
+}
+
+@media (min-width: 576px){
+  .bottom-sheet{
+      width: 100vw;
+  }
+}
+
+@media (min-width: 768px){
+  .bottom-sheet{
+      width: 80vw;
+  }
+}
+
+@media (min-width: 992px){
+  .bottom-sheet{
+      width: 60vw;
+  }
+}
+
+@media (min-width: 1200px){
+  .bottom-sheet{
+      width: 45vw;
+  }
+}
+
 .bg-red{
   background-color: #FF0000; color: white;
 }
@@ -44,6 +96,7 @@
   display: block;
   opacity: 1;
 }
+
 
  :root {
     --blue: #007bff;
@@ -3249,7 +3302,7 @@
     display: none;
     float: left;
     min-width: 10rem;
-    padding: 1rem;
+    padding: 1rem 0rem;
     margin: 0.125rem 0 0;
     font-size: 1rem;
     color: #212529;

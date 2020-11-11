@@ -21,6 +21,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-xsm-12 col-xs-12 col-sm-12 col-md-12 col-lg-4 form-group">
                 <label for="id_nombre_producto">Nombre del Producto</label>
                 <input class="form-control" type="text" name="nombre_producto" id="id_nombre_producto" required>
@@ -89,6 +90,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-xsm-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                 <button class="btn btn-danger" type="submit" style="width:100%">Guardar</button>
             </div>
@@ -97,7 +99,7 @@
 </div>
 
 <script>
-    $("input").focus(function(){$(".fomr-control").removeClass("is-invalid");});function crearproducto(form){var forms=document.getElementsByClassName("needs-validation"),validation=Array.prototype.filter.call(forms,function(o){o.addEventListener("submit",function(e){!1===o.checkValidity()&&(e.preventDefault(),e.stopPropagation()),o.classList.add("was-validated")},!1)}),crear=!0,_token="{{csrf_token()}}",nombre=$("#id_nombre_producto").val(),IDMarca=$("#id_marca_producto").val(),IDCategoria=$("#id_categoria_producto").val(),Peso=$("#id_peso_producto").val(),IDUnidadMedida=$("#id_unidad_medidad").val(),ValorProducto=$("#id_valor_producto").val(),Descripcion=$("#id_descripcion_producto").val(),ImagenProducto=$("#hidden_Img1").val();1==(crear=""!=nombre&&(""!=IDMarca&&(""!=IDCategoria&&(""!=Peso&&(""!=IDUnidadMedida&&(""!=ValorProducto&&(""!=Descripcion&&""!=ImagenProducto)))))))&&$.ajax({url:"{{route('crear-producto')}}",method:"POST",data:{_token:_token,Nombre:nombre,IDMarca:IDMarca,IDCategoria:IDCategoria,Peso:Peso,IDUnidadMedida:IDUnidadMedida,ValorProducto:ValorProducto,Descripcion:Descripcion,ImagenProducto:ImagenProducto},success:function(o){console.log(o),1==o?($("#id_nombre_producto").val(""),$("#id_marca_producto").val(""),$("#id_categoria_producto").val(""),$("#id_peso_producto").val(""),$("#id_unidad_medidad").val(""),$("#id_valor_producto").val(""),$("#id_descripcion_producto").val(""),$("#hidden_Img1").val(""),document.getElementById("UpFile").removeAttribute("disabled"),document.getElementById("hidden_Img1").removeAttribute("class"),document.getElementById("imgProducto").removeAttribute("src"),document.getElementById("div_img1").style.display="none",document.getElementById("ok_producto").style.display="block"):document.getElementById("false_producto").style.display="block"}});}
+    function crearproducto(form){var forms=document.getElementsByClassName("needs-validation"),validation=Array.prototype.filter.call(forms,function(o){o.addEventListener("submit",function(e){!1===o.checkValidity()&&(e.preventDefault(),e.stopPropagation()),o.classList.add("was-validated")},!1)}),crear=!0,_token="{{csrf_token()}}",nombre=$("#id_nombre_producto").val(),IDMarca=$("#id_marca_producto").val(),IDCategoria=$("#id_categoria_producto").val(),Peso=$("#id_peso_producto").val(),IDUnidadMedida=$("#id_unidad_medidad").val(),ValorProducto=$("#id_valor_producto").val(),Descripcion=$("#id_descripcion_producto").val(),ImagenProducto=$("#hidden_Img1").val();1==(crear=""!=nombre&&(""!=IDMarca&&(""!=IDCategoria&&(""!=Peso&&(""!=IDUnidadMedida&&(""!=ValorProducto&&(""!=Descripcion&&""!=ImagenProducto)))))))&&$.ajax({url:"{{route('crear-producto')}}",method:"POST",data:{_token:_token,Nombre:nombre,IDMarca:IDMarca,IDCategoria:IDCategoria,Peso:Peso,IDUnidadMedida:IDUnidadMedida,ValorProducto:ValorProducto,Descripcion:Descripcion,ImagenProducto:ImagenProducto},success:function(o){console.log(o),1==o?($("#id_nombre_producto").val(""),$("#id_marca_producto").val(""),$("#id_categoria_producto").val(""),$("#id_peso_producto").val(""),$("#id_unidad_medidad").val(""),$("#id_valor_producto").val(""),$("#id_descripcion_producto").val(""),$("#hidden_Img1").val(""),document.getElementById("UpFile").removeAttribute("disabled"),document.getElementById("hidden_Img1").removeAttribute("class"),document.getElementById("imgProducto").removeAttribute("src"),document.getElementById("div_img1").style.display="none",document.getElementById("ok_producto").style.display="block"):document.getElementById("false_producto").style.display="block"}});}
 </script>
 
 @endsection

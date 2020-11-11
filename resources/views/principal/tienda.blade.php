@@ -1,66 +1,13 @@
 @extends('index')
 
 @section('main_content')
-<style>
-    .bottom-sheet-heading {
-        padding: 0.875rem 1.25rem;
-        font-size: 1.2rem;
-    }
-    .bottom-sheet {
-        overflow: auto;
-        right: 0;
-        left: 0;
-        margin-right: auto;
-        margin-left: auto;
-        width: 40vw;
-        position: fixed;
-        bottom: -50vh;
-        z-index: 999;
-        background: #fff;
-        transition: all 0.3s;
-        text-align: left;
-    }
-    .bottom-sheet.active {
-        bottom: 0;
-    }
-
-    @media (min-width: 400px){
-        .bottom-sheet{
-            width: 100vw;
-        }
-    }
-
-    @media (min-width: 576px){
-        .bottom-sheet{
-            width: 100vw;
-        }
-    }
-
-    @media (min-width: 768px){
-        .bottom-sheet{
-            width: 80vw;
-        }
-    }
-
-    @media (min-width: 992px){
-        .bottom-sheet{
-            width: 60vw;
-        }
-    }
-
-    @media (min-width: 1200px){
-        .bottom-sheet{
-            width: 45vw;
-        }
-    }
-</style>
 
 <div class="overlay"></div>
 <!-- Bottom sheet -->
 <nav class="bottom-sheet bg-light shadow">
-    <div id="detalle-content-bottom-sheet" class="row" style="padding-top:0.8rem;">
+    <div class="row" style="padding-top:0.8rem;">
         <div class="col-xsm-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-            <h3 id="id_nombre_btm_sheet">Producto 1</h3> 
+            <h3 id="id_nombre_btm_sheet"></h3> 
         </div>
         <div class="col-xsm-12 col-xs-12 col-sm-12 col-md-4 col-lg-4 form-group text-center">
             <img id="id_image_btm_sheet" style="height:150px;">
@@ -81,8 +28,6 @@
                 </div>
             </div> 
         </div>
-    </div>
-    <div class="row">
         <div class="col-xsm-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
             <button class="btn btn-outline-secondary" style="width: 100%;">Iniciar Sesión para ver precios</button>
         </div>
@@ -105,7 +50,7 @@
                         <div class="card shadow-sm">
                             <div class="card-body" style="padding: 1rem 0.5rem;">
                                 <div class="row">
-                                    <div class="col-xsm-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group text-left">
+                                    <div class="col-xsm-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group text-left" style="height:55px;">
                                         <h5>{{ $producto->Nombre }}</h5>
                                     </div>
                                     <div class="col-xsm-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group text-center">
@@ -148,8 +93,6 @@
             }
         })
     }
-</script>
-<script>
     jQuery(document).ready(function () {
         $(".overlay").on("click", function () {
             $(".bottom-sheet").removeClass("active"), $(".overlay").removeClass("active");
