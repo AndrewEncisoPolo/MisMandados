@@ -10,13 +10,10 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-red fixed-top">
-            <a class="navbar-brand" href="#" style="padding-left:0.5rem;">
-            <img src="../resources/img/MisMandados.png" style="width: 215px;">
-            </a>
+            <a class="navbar-brand pl-1"><img src="../resources/img/MisMandados-min.png" style="width: 215px;"></a>
         </nav>
         <div class="container"  style="margin-top:56px;">
-        
-            <div class="row" style="padding-top:1rem;">
+            <div class="row pt-3">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                     @foreach ($nombre as $item)
                         <h1>{{$item->Nombre}}</h1>

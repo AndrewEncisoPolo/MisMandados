@@ -1,8 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {return redirect('inicio');});
+Route::get('/', 'ServiceController@slashRoute');
 
 // TIENDA CONTROLLER 
 Route::get('/tienda', 'tiendaController@init');
@@ -29,15 +28,35 @@ Route::get('/error', 'ServiceController@error');
 Route::any('/obtener-producto-id', 'ServiceController@get_producto_id')->name('obtener-producto-id');
 
 
-Route::post('/registrarEmpresa', 'ServiceController@registrarEmpresa');
-
-
 Route::post('/registrarUsuario', 'ServiceController@registrarUsuario');
 Route::get('/detalle-consumidor', 'ServiceController@registrarDetalleConsumidor');
+
 Route::any('/crear-datos-basicos-consumidor', 'ServiceController@crearDatosBasicosConsumidor')->name('crear-datos-basicos-consumidor');
 Route::any('/crear-ubicacion-consumidor', 'ServiceController@crearUbicacionConsumidor')->name('crear-ubicacion-consumidor');
 
 
+Route::post('/registrarEmpresa', 'ServiceController@registrarEmpresa');
+Route::get('/detalle-empresa', 'ServiceController@registrarDetalleEmpresa');
+
+Route::any('/crear-imagenes-perfil-empresa', 'ServiceController@crearImagenesEmpresa')->name('crear-imagenes-perfil-empresa');
+Route::any('/crear-datos-basicos-empresa', 'ServiceController@crearDatosBasicosEmpresa')->name('crear-datos-basicos-empresa');
+Route::any('/crear-ubicacion-empresa', 'ServiceController@crearUbicacionEmpresa')->name('crear-ubicacion-empresa');
+
+//----------------------------------------------- PERFIL DEL PERFIL EMPRESA -----------------------------------------------------------//
+
+
+// Perfil principal 
+Route::get('/perfil-empresa', 'empresaController@perfil');
+
+// Producto
+    Route::get('/frm-agregar-producto', 'empresaController@frmProductoAsociado');
+    Route::any('/get-producto-empresa', 'empresaController@obtenerProductos')->name('get-producto-empresa');
+    Route::any('/get-producto-filtros', 'empresaController@getProductoPorFiltros')->name('get-producto-filtros');
+    Route::any('/agregar-producto-empresa', 'empresaController@agregarProducto')->name('agregar-producto-empresa');
+
+// Editar EMPRESA 
+Route::get('/editar-empresa', 'empresaController@editarEmpresa');
+    
 
 //----------------------------------------------- PERFIL DEL PERFIL CONSUMIDOR -----------------------------------------------------------//
     
@@ -48,12 +67,13 @@ Route::any('/crear-ubicacion-consumidor', 'ServiceController@crearUbicacionConsu
 // METODO Y VISUAL de TIENDA DEL PERFIL CONSUMIDOR
     Route::post('/empresa-consumidor', 'consumidorController@tiendaEmpresa');
 
+    Route::get('/editar-consumidor', 'consumidorController@editarConsumidor');
+    
+
 // Servicios
     Route::any('/obtener-detalle-producto-id', 'consumidorController@get_detalle_producto_id')->name('obtener-detalle-producto-id');
     Route::any('/agregar-producto-carrito', 'consumidorController@add_producto_carrito')->name('agregar-producto-carrito');
-
-
-
+    Route::any('/get-producto-carrito', 'consumidorController@get_producto_carrito')->name('get-producto-carrito');
 
 //------------------------------------------------ PERFIL DEL PERFIL ADMINISTRADOR -----------------------------------------------//
     Route::get('/perfil-adm', 'adminController@perfil');

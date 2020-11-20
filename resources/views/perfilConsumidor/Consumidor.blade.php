@@ -1,6 +1,5 @@
 @inject('controller', 'App\Http\Controllers\ServiceController')
 @if ($_SESSION["user_session"])
-
   @if ($controller::authUser($_SESSION["user_session"])==2)
   <!doctype html>
   <html lang="es">
@@ -14,11 +13,8 @@
       <script src="../resources/js/bootstrap.js"></script>
     </head>
     <body>
-    
       <nav class="navbar navbar-expand-lg navbar-light bg-red fixed-top">
-          <a class="navbar-brand" href="#" style="padding-left:0.5rem;">
-          <img src="../resources/img/MisMandados.png" style="width: 215px;">
-          </a>
+          <a class="navbar-brand pl-1"><img src="../resources/img/MisMandados-min.png" style="width: 215px;"></a>
           <button id="toogle-collapse-navbar" class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
@@ -36,7 +32,7 @@
                       Perfil
                     </a>
                     <div class="dropdown-menu shadow" aria-labelledby="navbarDropdown" style="left:-80px;">
-                      <a class="dropdown-item text-left">
+                      <a href="{{url('editar-consumidor')}}" class="dropdown-item text-left">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" style="margin-bottom:4px;"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg>
                         Editar Datos
                       </a>
@@ -57,20 +53,14 @@
               </div>
           </div>
       </nav>
-
       <div>@yield('consumidor_content')</div> 
-
     </body>
   </html>
 
-  <script>
-    $("#toogle-collapse-navbar").click(function() {$('#navbarSupportedContent').collapse('toggle');});
-  </script>
-  
+  <script>$("#toogle-collapse-navbar").click(function() {$('#navbarSupportedContent').collapse('toggle');});</script>
   @else
     <script>window.location.href = "{{url('inicio')}}";</script>
   @endif
-
 @else
   <script>window.location.href = "{{url('inicio')}}";</script>
 @endif

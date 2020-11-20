@@ -58,7 +58,7 @@
                     </select>
                 </div>
                 <div class="col-xsm-12 col-xs-12 col-sm-12 col-md-12 col-lg-4 form-group">
-                    <label for="id_valor_producto">Valor del Producto</label>
+                    <label for="id_valor_producto">Valor del Producto (Precio Sugerido)</label>
                     <input class="form-control" type="text" onkeypress="isInputNumber(event)" name="valor_producto" id="id_valor_producto" required>
                 </div>
                 <div class="col-xsm-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">

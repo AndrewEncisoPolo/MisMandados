@@ -191,7 +191,7 @@ class adminController extends Controller
 
             public function obtenerDepartamentos(){
                 $data_departamento = DB::select('CALL get_departamento()');
-                echo json_encode($data_marca);
+                echo json_encode($data_departamento);
             }
 
             public function crearDepartamento(Request $request){
@@ -273,8 +273,8 @@ class adminController extends Controller
             }
 
             public function obtenerBarrios(){
-                $data_marca = DB::select('CALL get_barrio()');
-                echo json_encode($data_marca);
+                $data_barrios = DB::select('CALL get_barrio()');
+                echo json_encode($data_barrios);
             }
 
             public function crearBarrio(Request $request){
