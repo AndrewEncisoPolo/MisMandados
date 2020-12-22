@@ -3,14 +3,15 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="../resources/css/bootstrap.css">
+        <title>Mis Mandados</title>
+
+        <link rel="stylesheet" href="../resources/css/siorco.css" type='text/css'>
         <script src="../resources/js/jquery-3.5.1.slim.min.js"></script>
         <script src="../resources/js/bootstrap.js"></script>
-        <title>Mis Mandados</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-red fixed-top">
-            <a class="navbar-brand pl-1"><img src="../resources/img/MisMandados-min.png" style="width: 215px;"></a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-nav-soc fixed-top shadow-sm py-0">
+            <a class="navbar-brand px-1 bg-white"><img height="46px" src="../resources/img/LOGO_Soc.png"></a>
         </nav>
         <div class="container"  style="margin-top:56px;">
             <div class="row pt-3">
@@ -30,7 +31,61 @@
                     </div>
                 </div>
 
-                <div id="form-datos-personales" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                <div id="form-disenno-perfil" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                    <form class="disenno-perfil-needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                <h4>Previsualización imagen de Perfil</h4>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                <div class="alert alert-info">
+                                    Los datos requeridos aquí son necesarrios al momento de registrarse para complementar tus datos personales basicos del consumidor.
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                <label for="FileHolder">Previsualización<span class="text-danger">*</span></label>
+                            </div>    
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                <div class="col-xs-12 col-md-12 col-md-12 col-lg-12 text-center">
+                                    <div class="from-group">
+                                        <div class="rounded-circle shadow-sm bg-white mb-4" id="imgPerfil" style="height:115px;width:115px;z-index: 100;margin-bottom: -2rem;margin:0 auto;background-size: contain;background-repeat: no-repeat;background-position: center;">    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                <div class="row">
+                                    <div class="col-xsm-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                        <label for="UpFilePerfil">Imagen Perfil<span class="text-danger">*</span></label>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="UpFilePerfil" accept="image/jpeg , image/jpg , image/png" class="form-control" onchange="encodeImageFileAsURLPerfil(this)" lang="es">
+                                            <label class="custom-file-label" for="customFile">Elegir archivo<span class="text-danger">*</span></label>
+                                        </div>
+                                        <div id="mensajeAlertPerfil" style="display: none;margin-top:1rem;">
+                                            <div class="alert" role="alert" style="border-radius: 0.25rem;color:#cc0e15;border: 1px solid #fca9ac;background-color: #fcd2d4;margin-bottom: 0px;">
+                                                Recuerde que <b>MAXIMO 1 Megabyte</b> por archivo
+                                            </div>
+                                        </div>
+                                        <input id="hidden_ImgPerfil" type="hidden" required>
+                                        <button id="btn-remove-perfil" type="button" class="btn btn-outline-secondary btn-sm w-100 mt-2" style="display:none;"> Remover imagen de Perfil</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group">
+                                <button type="button" id="btn-omitir-datos-personales" class="btn btn-outline-primary float-left w-100">No tengo fotos de mi negocio, Omitir</button>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group">
+                                <button type="submit" id="btn-siguiente-datos-personales" class="btn btn-primary float-right w-100">Siguiente</button>
+                            </div>
+                        </div>   
+                    </form>
+                </div>
+
+                <div id="form-datos-personales" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group" style="display:none;">
                     <form class="datos-personales-consumidor-needs-validation" novalidate>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
@@ -52,18 +107,18 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group">
                                 <label for="id_nrodocumento">Numero de Documento</label>
-                                <input id="id_nrodocumento" class="form-control" type="text" required>
+                                <input id="id_nrodocumento" class="form-control" onkeypress="isInputNumber(event)" maxlength="10" type="text" required>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group">
                                 <label for="id_telefono">Telefono</label>
-                                <input id="id_telefono" class="form-control" type="text" required>
+                                <input id="id_telefono" class="form-control" onkeypress="isInputNumber(event)" maxlength="8" type="text" required>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group">
                                 <label for="id_telefonocelular">Telefono Celular</label>
-                                <input id="id_telefonocelular" class="form-control" type="text" required>
+                                <input id="id_telefonocelular" class="form-control" onkeypress="isInputNumber(event)" maxlength="10" type="text" required>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                                <button type="submit" id="btn-siguiente-datos-personales" class="btn btn-danger float-right">Siguiente</button>
+                                <button type="submit" id="btn-siguiente-datos-personales" class="btn btn-primary float-right">Siguiente</button>
                             </div>
                         </div>
                     </form>
@@ -112,7 +167,7 @@
                                 <input id="id_direccion" class="form-control" type="text" required>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                                <button id="btn-siguiente-ubicacion" type="submit" class="btn btn-danger float-right">Finalizar</button>
+                                <button id="btn-siguiente-ubicacion" type="submit" class="btn btn-primary float-right">Finalizar</button>
                             </div>
                         </div>
                     </form>
@@ -128,7 +183,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group text-center">
-                                <a href="{{url('perfil-consumidor')}}" id="btn-siguiente-ubicacion" type="submit" class="btn btn-danger">Ingresar al Perfil Principal</a>
+                                <a href="{{url('perfil-consumidor')}}" id="btn-siguiente-ubicacion" type="submit" class="btn btn-primary">Ingresar al Perfil Principal</a>
                             </div>
                         </div>
                     </form>
@@ -139,8 +194,14 @@
     </body>
 </html>
 
-
 <script>
+    function isInputNumber(evt) {
+        let ch = String.fromCharCode(evt.which);
+        if (!(/[0-9]/.test(ch))) {
+            evt.preventDefault();
+        }
+    }
+
     $( "#id_departamento" ).change(function() {
         $('#id_ciudad').empty();
         var iddepartamento = $("#id_departamento").val();
@@ -198,6 +259,91 @@
         })
     });
     
+    function encodeImageFileAsURLPerfil(e) {
+        var t = e.files[0],
+            n = new FileReader();
+        t.size < 15e5
+            ? ((n.onloadend = function () {
+                n.result.length, document.getElementById("div");
+                var e = document.getElementById("imgPerfil").hasAttribute("src");
+                1 == e
+                    ? (document.getElementById("mensajeAlertPerfil").style.display = "block")
+                    : 0 == e &&
+                        (document.getElementById("UpFilePerfil").setAttribute("disabled", ""),
+                        document.getElementById("hidden_ImgPerfil").setAttribute("value", n.result),
+                        document.getElementById("imgPerfil").style.backgroundImage = "url('" + n.result + "')",
+                        document.getElementById("btn-remove-perfil").style.display = "block",
+                        (document.getElementById("mensajeAlertPerfil").style.display = "none"));
+            }),
+            n.readAsDataURL(t))
+            : (document.getElementById("mensajeAlertPerfil").style.display = "block");
+    }
+
+    $( "#btn-remove-perfil" ).click(function() {
+        document.getElementById("UpFilePerfil").removeAttribute("disabled");
+        document.getElementById("hidden_ImgPerfil").removeAttribute("value");
+        document.getElementById("imgPerfil").style.backgroundImage = "";
+        document.getElementById("btn-remove-perfil").style.display = 'none';
+    });
+
+    $( "#btn-omitir-datos-personales" ).click(function() {
+        document.getElementById("form-disenno-perfil").style.display="none";
+        document.getElementById("form-datos-personales").style.display="block";
+        document.getElementById("form-ubicacion").style.display="none";
+        document.getElementById("form-final").style.display="none";
+        document.getElementById("div-error").style.display="none";
+        $("#progress-bar").css("width", "33%").attr("aria-valuenow", 33).text(33 + "% Completado");
+    });
+
+    (function() {'use strict';
+      window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('disenno-perfil-needs-validation');
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          
+          form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+            if (form.checkValidity() === false) {
+                console.log("campos vacios");
+                form.classList.add('was-validated');
+            }else{
+                var crear = 0;
+                var ImgPerfil = $("#hidden_ImgPerfil").val();
+                if (!ImgPerfil==""){crear = 1;}
+
+                if(crear==1){
+                    $.ajax({
+                    url:"{{route('crear-imagenes-perfil-usuario')}}",
+                    method:"POST",
+                    data:{ImgPerfil:ImgPerfil,_token:"{{csrf_token()}}"},
+                    success:function(result)
+                        {
+                            if(result==1){
+                                document.getElementById("UpFilePerfil").removeAttribute("disabled");
+                                document.getElementById("hidden_ImgPerfil").removeAttribute("value");
+                                document.getElementById("imgPerfil").style.backgroundImage = "";
+
+                                document.getElementById("form-disenno-perfil").style.display="none";
+                                document.getElementById("form-datos-personales").style.display="block";
+                                document.getElementById("form-ubicacion").style.display="none";
+                                document.getElementById("form-final").style.display="none";
+                                document.getElementById("div-error").style.display="none";
+
+                                form.classList.remove('was-validated');
+                                $("#progress-bar").css("width", "33%").attr("aria-valuenow", 33).text(33 + "% Completado");
+                            }else{
+                                document.getElementById("div-error").style.display="block";
+                            }
+                        }
+                    })
+                }
+            }
+
+          }, false);
+        });
+      }, false);
+    })();
+
     (function() {'use strict';
       window.addEventListener('load', function() {
         var forms = document.getElementsByClassName('datos-personales-consumidor-needs-validation');
@@ -239,7 +385,7 @@
                                 document.getElementById("div-error").style.display="none";
 
                                 form.classList.remove('was-validated');
-                                $("#progress-bar").css("width", "50%").attr("aria-valuenow", 50).text(50 + "% Completado");
+                                $("#progress-bar").css("width", "33%").attr("aria-valuenow", 50).text(50 + "% Completado");
                             }else{
                                 document.getElementById("div-error").style.display="block";
                             }
@@ -252,7 +398,6 @@
         });
       }, false);
     })();
-
 
     (function() {'use strict';
       window.addEventListener('load', function() {

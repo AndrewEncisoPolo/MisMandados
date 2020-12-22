@@ -25,10 +25,8 @@ class empresaController extends Controller
         $data_ciudad = DB::select('CALL get_ciudad()');
         $data_localidad = DB::select('CALL get_localidad()');
         $data_barrio = DB::select('CALL get_barrio()');
-        
         $data_tipocomercio = DB::select('CALL get_tipocomercio()');
         $data_tipodocumento = DB::select('CALL get_tipodocumento_empresa()');
-
         $data_info_basica = DB::select('CALL get_info_basica_empresa(?);',[$_SESSION["user_session"]]);
         $data_ubicacion = DB::select('CALL get_info_ubicacion_empresa(?);',[$_SESSION["user_session"]]);
         $data_info = DB::select('CALL get_info_empresa(?);',[$_SESSION["user_session"]]);
@@ -67,9 +65,52 @@ class empresaController extends Controller
         $data_barrio = DB::select('CALL get_producto_filtros(?,?,?)',[$request->get('IDMarca'),$request->get('IDCategoria'),$request->get('IDUnidadMedidad')]);
         echo json_encode($data_barrio);
     }
-}
 
-/*
-Foto Fachada
-Foto logotipo
-*/
+    function get_pedido(){
+        session_start();
+        $pedido = DB::select('CALL get_pedido_empresa(?)',[$_SESSION['user_session']]);
+        echo json_encode($pedido);
+    }
+    
+    function get_pedido_id(Request $request){
+        session_start();
+        $pedido = DB::select('CALL get_pedido_detalle_id_empresa(?,?)',[$_SESSION['user_session'],$request->get('IDPedido')]);
+        echo json_encode($pedido);
+    }
+    
+    function get_detalle_pedido(Request $request){
+        $pedido = DB::select('CALL get_detalle_pedido(?)',[$request->get('IDPedido')]);
+        echo json_encode($pedido);
+    }
+
+    function pedido_en_proceso(Request $request){
+        $output = 0;
+        try {
+            session_start();
+            $pedido = DB::select('CALL update_estadopedido_enproceso(?,?)',[$_SESSION['user_session'],$request->get('IDPedido')]);
+            $output = 1;
+        } catch (\Throwable $th) {$output = 0;}
+        echo $output;
+    }
+
+    function pedido_cancelado(Request $request){
+        $output = 0;
+        try {
+            session_start();
+            $pedido = DB::select('CALL update_estadopedido_cancelado(?,?)',[$_SESSION['user_session'],$request->get('IDPedido')]);
+            $output = 1;
+        } catch (\Throwable $th) {$output = 0;}
+        echo $output;
+    }
+
+    function pedido_despachado(Request $request){
+        $output = 0;
+        try {
+            session_start();
+            $pedido = DB::select('CALL update_estadopedido_despachado(?,?)',[$_SESSION['user_session'],$request->get('IDPedido')]);
+            $output = 1;
+        } catch (\Throwable $th) {$output = 0;}
+        echo $output;
+    }
+    
+}

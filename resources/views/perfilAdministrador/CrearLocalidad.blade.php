@@ -7,7 +7,7 @@
     <div class="row" style="padding-top:1rem;">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 2rem;">
             <h1>Localidad 
-                <button class="btn btn-outline-danger float-right" data-toggle="modal" data-target="#modal-crear-localidad" style="margin-top: 10px;">Crear Localidad</button>
+                <button class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modal-crear-localidad" style="margin-top: 10px;">Crear Localidad</button>
             </h1>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 from-group">
@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="col-xsm-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                            <button class="btn btn-danger" type="submit" style="width:100%">Guardar</button>
+                            <button class="btn btn-primary" type="submit" style="width:100%">Guardar</button>
                         </div>
                     </div>
                 </form>

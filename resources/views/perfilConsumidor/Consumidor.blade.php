@@ -6,15 +6,15 @@
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <meta name="csrf-token" content="{{ csrf_token() }}">
       <title>Consumidor</title>
-      <link rel="stylesheet" href="../resources/css/bootstrap.css">
+      <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="../resources/css/siorco.css">
       <script src="../resources/js/jquery-3.5.1.slim.min.js"></script>
       <script src="../resources/js/bootstrap.js"></script>
     </head>
     <body>
-      <nav class="navbar navbar-expand-lg navbar-light bg-red fixed-top">
-          <a class="navbar-brand pl-1"><img src="../resources/img/MisMandados-min.png" style="width: 215px;"></a>
+      <nav class="navbar navbar-expand-lg navbar-light bg-nav-soc fixed-top shadow-sm py-0">
+        <a class="navbar-brand px-1 bg-white"><img height="46px" src="../resources/img/logos/LOGO_Soc.png" alt="Sistema Organizacional de Comercio - SOC"></a>
           <button id="toogle-collapse-navbar" class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">

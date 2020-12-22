@@ -18,8 +18,17 @@ class adminController extends Controller
         }
     #endregion
 
+    
+    public function frmimgPromocion(){
+        session_start();
+        return view('perfilAdministrador/CrearImagenProm');
+    }
 
-
+    public function obtenerImgPromocion(){
+        $data_marca = DB::select('CALL get_imgProm()');
+        echo json_encode($data_marca);
+    }
+    
     #region Cliente
 
         #region TIPO COMERCIO
@@ -119,9 +128,7 @@ class adminController extends Controller
                 $data_marca = DB::select('CALL insert_marca(?,?)',[$request->get('Nombre'),$_SESSION["user_session"]]);
 
                 $salida = "";$mensaje = "";
-                
                 foreach ($data_marca as $key) {$salida = $key->Salida;$mensaje = $key->Mensaje;}
-                
                 $output = $salida;
 
                 echo $output;
@@ -312,7 +319,4 @@ class adminController extends Controller
         #endregion
 
     #endregion
-
 }
-
-

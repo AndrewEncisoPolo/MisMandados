@@ -6,7 +6,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="../resources/css/bootstrap.css">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="../resources/css/siorco.css">
         <script src="../resources/js/jquery-3.5.1.slim.min.js"></script>
         <script src="../resources/js/bootstrap.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
@@ -14,9 +15,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-red fixed-top">
-            <a class="navbar-brand pl-1">       
-                <img src="../resources/img/MisMandados-min.png" style="width: 215px;">
-            </a>
+          <a class="navbar-brand px-1 bg-white"><img height="46px" src="../resources/img/logos/LOGO_Soc.png" alt="Sistema Organizacional de Comercio - SOC"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

@@ -92,7 +92,7 @@
                 </div>
 
                 <div class="col-xsm-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                    <button class="btn btn-danger" type="submit" style="width:100%">Guardar</button>
+                    <button class="btn btn-primary" type="submit" style="width:100%">Guardar</button>
                 </div>
             </div>
         </form>

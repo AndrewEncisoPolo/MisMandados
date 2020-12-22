@@ -1,41 +1,18 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../resources/css/bootstrap.css">
-    <script src="../resources/js/jquery-3.5.1.slim.min.js"></script>
-    <script src="../resources/js/bootstrap.js"></script>
-    <title>Error</title>
-</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div id="container">
+      <div class="address">
+           <div class="input-reg rb-item input-group">
+                 <span class="input-group-addon">Address </span>
+                 <input type="text" class="form-control" placeholder="Insert text here">
+           </div>
+           <div align="center"><iframe class="map-img" width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed"></iframe></div>
+       </div>
+</div>
+<div align="center" style="margin-top: 10px"><button id="btnAddAddress" class="btn btn-warning btn-md" type="button">Add Address</button></div>
 
-<style>
-    .bottom-sheet-heading {
-        padding: 0.875rem 1.25rem;
-        font-size: 1.2rem;
-    }
-    .bottom-sheet {
-        right: 0;
-        left: 0;
-        margin-right: auto;
-        margin-left: auto;
-        width: 40vw;
-        height: 50vh;
-        position: fixed;
-        bottom: -50vh;
-        z-index: 999;
-        background: #fff;
-        transition: all 0.3s;
-        text-align: left;
-    }
-    .bottom-sheet.active {
-        bottom: 0;
-    }
-</style> 
-
-<body>
-
-    Error 
-    
-</body>
-</html>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    $("#btnAddAddress").click(function () {
+      $(".address").before('');
+    });
+</script>

@@ -45,10 +45,7 @@ class ServiceController extends Controller
         else{return redirect('Error');}
     }
 
-    public function get_producto_id(Request $request){
-        $detalle_producto = DB::select('CALL get_producto_id(?)',[$request->input('IdProducto')]);
-        echo json_encode($detalle_producto);
-    }
+    public function get_producto_id(Request $request){$detalle_producto = DB::select('CALL get_producto_id(?)',[$request->input('IdProducto')]);echo json_encode($detalle_producto);}
 
     //-------------------------------------------------------------------------------//
 
@@ -113,7 +110,7 @@ class ServiceController extends Controller
     public function crearUbicacionEmpresa(Request $request){
         session_start();
         $output = 0;
-        $data_ubicacion = DB::select('CALL create_info_ubicacion_usuario(?,?,?,?,?,?)',[$request->get('IDDepartamento'),$request->get('IDCiudad'),$request->get('IDLocalidad'),$request->get('IDBarrio'),$request->get('Direccion'),$_SESSION["user_session"]]);
+        $data_ubicacion = DB::select('CALL create_info_ubicacion_empresa(?,?,?,?,?,?,?,?)',[$request->get('IDDepartamento'),$request->get('IDCiudad'),$request->get('IDLocalidad'),$request->get('IDBarrio'),$request->get('Direccion'),$request->get('Latitud'),$request->get('Longitud'),$_SESSION["user_session"]]);
         
         $salida = "";$mensaje = "";
         foreach ($data_ubicacion as $key) {$salida = $key->Salida;$mensaje = $key->Mensaje;}
@@ -136,6 +133,18 @@ class ServiceController extends Controller
 
         if($token_usuario){session_start();$_SESSION["user_session"] = $token_usuario;return redirect('detalle-consumidor');}
         else{return redirect('inicio');}
+    }
+
+    public function imagenUsuario(Request $request){
+        session_start();
+        $output = 0;
+        
+        $data_perfil = DB::select('CALL insert_imagen_perfil(?,?)',[$request->get('ImgPerfil'),$_SESSION["user_session"]]);
+        $salida_perfil = "";$mensaje_perfil = "";
+        foreach ($data_perfil as $key) {$salida_perfil = $key->Salida;$mensaje_perfil = $key->Mensaje;}  
+
+        if($salida_perfil==true){$output = 1;}else{$output = 0;}
+        echo $output;
     }
 
     public function registrarDetalleConsumidor(Request $request){
@@ -196,7 +205,7 @@ class ServiceController extends Controller
         echo $output;
     }
 
-    public function error(){
-        return view('error');
-    }
+    public function error(){return view('otros/Error');}
+
+    //"pk.eyJ1IjoiYW5kcmV5ZW5jaXNvIiwiYSI6ImNraHVvNjZieTFmNWIyd21jMmd0Ymxjc24ifQ.wYakjSfXiE0JZmSrvgnu9Q"
 }

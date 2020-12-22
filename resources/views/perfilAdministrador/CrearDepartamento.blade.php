@@ -7,7 +7,7 @@
     <div class="row" style="padding-top:1rem;">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 2rem;">
             <h1>Departamento 
-                <button class="btn btn-outline-danger float-right" data-toggle="modal" data-target="#modal-crear-departamento" style="margin-top: 10px;">Crear Departamento</button>
+                <button class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modal-crear-departamento" style="margin-top: 10px;">Crear Departamento</button>
             </h1>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 from-group">

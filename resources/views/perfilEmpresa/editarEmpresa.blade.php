@@ -1,7 +1,7 @@
 @extends('perfilEmpresa/Empresa')
 @section('empresa_content')
 
-<div class="container"  style="margin-top:56px;">
+<div class="container" style="margin-top:56px;">
         
     <div class="row" style="padding-top:1rem;">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
@@ -9,8 +9,8 @@
         </div>
 
         <div id="div-ok" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group" style="display:none;">
-            <div class="alert alert-danger">
-                Ocurrio un error, por favor verifique los datos e intente de nuevo.
+            <div class="alert alert-success">
+                Se han actualizado los datos satisfactoriamente.
             </div>
         </div>
 
@@ -78,7 +78,7 @@
                                                     <label class="custom-file-label" for="customFile">Elegir archivo</label>
                                                 </div>
                                                 <div id="mensajeAlertPerfil" style="display: none;margin-top:1rem;">
-                                                    <div class="alert" role="alert" style="border-radius: 0.25rem;color:#cc0e15;border: 1px solid #fca9ac;background-color: #fcd2d4;margin-bottom: 0px;">
+                                                    <div class="alert alert-danger" role="alert">
                                                         Recuerde que <b>MAXIMO 1 Megabyte</b> por archivo
                                                     </div>
                                                 </div>
@@ -88,7 +88,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <button id="btn-siguiente-datos-personales" type="submit" class="btn btn-danger float-right">Guardar</button>
+                                        <button id="btn-siguiente-datos-personales" type="submit" class="btn btn-primary float-right">Guardar</button>
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
                                         @foreach ($data_info as $item_info)
                                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                                                 <label for="id_descripcion">Descripción de la Empresa</label>
-                                                <textarea id="id_descripcion" class="form-control" value="{{$item_info->Biografia}}" required></textarea>
+                                                <textarea id="id_descripcion" class="form-control" value="{{$item_info->Biografia}}" required>{{$item_info->Biografia}}</textarea>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group">
                                                 <label for="id_abre">¿A qué hora en que abre su empresa?</label>
@@ -174,7 +174,7 @@
                                         @endforeach
 
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <button type="submit" id="btn-siguiente-datos-personales" class="btn btn-danger float-right">Guardar</button>
+                                            <button type="submit" id="btn-siguiente-datos-personales" class="btn btn-primary float-right">Guardar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -192,7 +192,7 @@
                     @foreach ($data_ubicacion as $item_ubicacion)
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <h5 data-toggle="collapse" href="#collapseUbicacion" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <h5 id="a-ubicacion" data-toggle="collapse" href="#collapseUbicacion" role="button" aria-expanded="false" aria-controls="collapseExample">
                                 Ubicación<a class="dropdown-toggle text-dark float-right"></a>
                             </h5>
                         </div>
@@ -253,7 +253,7 @@
                                         <input id="id_direccion" class="form-control" type="text" value="{{$item_ubicacion->Direccion}}" required>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <button id="btn-siguiente-ubicacion" type="submit" class="btn btn-danger float-right">Guardar</button>
+                                        <button id="btn-siguiente-ubicacion" type="submit" class="btn btn-primary float-right">Guardar</button>
                                     </div>
                                 </div>
                             </div>
@@ -323,6 +323,7 @@
         document.getElementById("btn-remove-perfil").style.display = 'none';
     });
 
+    
     $( "#id_departamento" ).change(function() {
         $('#id_ciudad').empty();
         var iddepartamento = $("#id_departamento").val();
@@ -394,7 +395,6 @@
             }else{
                 var crear = 0;
                 var _token = "{{csrf_token()}}";
-
                 var ImgPerfil = $("#hidden_ImgPerfil").val();
                 var ImgPortada = $("#hidden_ImgPortada").val();
 
@@ -409,8 +409,10 @@
                         {
                             if(result==1){
                                 document.getElementById("div-ok").style.display="block";
+                                document.getElementById("div-error").style.display="none";
                                 form.classList.remove('was-validated');
                             }else{
+                                document.getElementById("div-ok").style.display="none";
                                 document.getElementById("div-error").style.display="block";
                             }
                         }
@@ -460,8 +462,10 @@
                         {
                             if(result==1){
                                 document.getElementById("div-ok").style.display="block";
+                                document.getElementById("div-error").style.display="none";
                                 form.classList.remove('was-validated');
                             }else{
+                                document.getElementById("div-ok").style.display="none";
                                 document.getElementById("div-error").style.display="block";
                             }
                         }
@@ -507,8 +511,10 @@
                         {
                             if(result==1){
                                 document.getElementById("div-ok").style.display="block";
+                                document.getElementById("div-error").style.display="none";
                                 form.classList.remove('was-validated');
                             }else{
+                                document.getElementById("div-ok").style.display="none";
                                 document.getElementById("div-error").style.display="block";
                             }
                         }
@@ -521,5 +527,26 @@
       }, false);
     })();
 
+</script>
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYW5kcmV5ZW5jaXNvIiwiYSI6ImNraHRha2EwZTEwOWEyeG1qajJ5aHZkbzkifQ.VzXE5BeIroJXKKcvMndX2A';
+    var map = new mapboxgl.Map({container: 'map',style: 'mapbox://styles/mapbox/streets-v11',center: [-74.2478956, 4.6486259],zoom: 5});
+    map.addControl(new MapboxGeocoder({accessToken: mapboxgl.accessToken}));
+    map.addControl(new mapboxgl.NavigationControl());
+    map.addControl(new mapboxgl.FullscreenControl());
+    $(document).ready(function() {$('#a-ubicacion').on('click', function() {getLocation();});});
+    function showLocation(position) {
+        document.getElementById("map-location-longitude").value = position.coords.longitude;
+        document.getElementById("map-location-latitude").value = position.coords.latitude;
+        var marker = new mapboxgl.Marker().setLngLat([position.coords.longitude, position.coords.latitude]).addTo(map);
+        map.flyTo({center: [position.coords.longitude, position.coords.latitude],zoom: 15,bearing: 0,speed: 1.8,curve: 1,easing: function (t) {return t;},essential: true});
+        document.getElementById("btn-siguiente-ubicacion").disabled = false;
+    }
+    function errorHandler(err) {if(err.code == 1) {alert("Error: Access is denied!");} else if( err.code == 2){alert("Error: Position is unavailable!");}}
+    function getLocation() {if(navigator.geolocation) {var options = {timeout:60000};navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);}}
+
+// Agregar Marcadores de sitios cerca 
+// var marker = new mapboxgl.Marker().setLngLat([lng, lat]).setPopup(new mapboxgl.Popup().setHTML("<h1>Hello World!</h1>")).addTo(map);
 </script>
 @endsection
